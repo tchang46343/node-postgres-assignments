@@ -5,6 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const movieDataBase = require("./movieDataBase.json");
 const app = express();
+
 app.use(morgan("dev"));
 app.use(cors());
 app.use(helmet());
@@ -32,7 +33,8 @@ app.get("/movie", function handleGetGenre(req, res) {
   }
   if (req.query.avg_vote) {
     response = movieDataBase.filter(
-      avg_vote => Number(avg_vote) >= Number(req.query.avg_vote)
+      movieDataBase =>
+        Number(movieDataBase.avg_vote) >= Number(req.query.avg_vote)
     );
   }
   res.json(response);
