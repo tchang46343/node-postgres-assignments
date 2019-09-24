@@ -1,4 +1,0 @@
-const app = require("./app");
-app.listen(8000, () => {
-  console.log("server is listeening on PORT 8000");
-});
