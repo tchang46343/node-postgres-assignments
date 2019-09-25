@@ -22,17 +22,17 @@ app.use(function validateBearerToken(req, res, next) {
 app.get("/movie", function handleGetGenre(req, res) {
   let response = movieDataBase;
   if (req.query.genre) {
-    response = movieDataBase.filter(genre =>
+    response = response.filter(genre =>
       genre.genre.toLowerCase().includes(req.query.genre.toLowerCase())
     );
   }
   if (req.query.country) {
-    response = movieDataBase.filter(country =>
+    response = response.filter(country =>
       country.country.toLowerCase().includes(req.query.country.toLowerCase())
     );
   }
   if (req.query.avg_vote) {
-    response = movieDataBase.filter(
+    response = response.filter(
       movieDataBase =>
         Number(movieDataBase.avg_vote) >= Number(req.query.avg_vote)
     );
